@@ -1,4 +1,4 @@
-ghidra_proj/**/*
-github_code/**/*
-out/**/*
+ghidra_proj
+github_code
+out
 

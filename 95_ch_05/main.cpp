@@ -184,30 +184,40 @@ int main() {
   // https://en.cppreference.com/w/cpp/algorithm/reduce
   // https://biowpn.github.io/bioweapon/2024/04/23/accumulate-reduce-fold.html
   {
-    // large vec of random floats/ doubles
-  }
-  {
     using clock = std::chrono::high_resolution_clock;
     using std::chrono::duration;
 
-    auto measure = [](const auto &policy, std::vector<int> v) {
+    // const auto &policy,
+    auto measure = [](std::vector<int> v) {
       const auto start = clock::now();
-      auto sum = std::reduce(policy, v.begin(), v.end());
+
+      auto sum = 0;
+      for (auto x : v) {
+        sum += x;
+      }
+
+      //   auto sum = std::reduce(policy, v.begin(), v.end());
+      //   auto sum = std::accumulate(v.begin(), v.end(), 0);
+      //   auto sum = std::ranges::fold_left(v, 0, std::plus<int>());
+      
+      //   auto make_double = [](auto x) { return (double)x; };
+      //   auto op = std::plus<double>{};
+      //   auto sum = std::transform_reduce(v.begin(), v.end(), 0, op, make_double);
+
       const auto end = clock::now();
-    //   auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
       duration<double> elapsed = end - start;
       print("{} {}\n", sum, elapsed);
     };
 
-    std::vector<int> v(100'000'000);
+    std::vector<int> v(1'000'000'000);
     std::mt19937 gen{std::random_device{}()};
     std::ranges::generate(v, gen);
 
-    namespace exe = std::execution;
-
-    measure(exe::par, v);
-    measure(exe::unseq, v);
-    measure(exe::par_unseq, v);
-    measure(exe::par, v);
+    measure(v);
+    // namespace exe = std::execution;
+    // measure(exe::seq, v);
+    // measure(exe::unseq, v);
+    // measure(exe::par_unseq, v);
+    // measure(exe::par, v);
   }
 }
