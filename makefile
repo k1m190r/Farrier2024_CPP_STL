@@ -1,8 +1,8 @@
 NAME = main
 CFILE = main
 CPP = clang++-20
-
-CFLAGS1 = -stdlib=libc++ -O3 -std=c++26 -g3 -pthread  -fexperimental-library
+# 
+CFLAGS1 = -O3 -std=c++26 -g3 -pthread -stdlib=libc++ -fexperimental-library
 CFLAGS2 = -Wall -Wextra -pedantic -fsanitize=address -Werror
 CFLAGS = $(CFLAGS1) $(CFLAGS2)
 

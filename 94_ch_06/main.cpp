@@ -25,9 +25,7 @@ int main() {
 
     constexpr auto sumArray = [](const std::array<int, 5> &arr) {
       int sum = 0;
-      for (const auto &val : arr) {
-        sum += val;
-      }
+      for (const auto &val : arr) sum += val;
       return sum;
     };
 
@@ -39,9 +37,7 @@ int main() {
     std::array<Point, 3> points = {{{1, 2}, {3, 4}, {5, 6}}};
 
     // structured bindings with &[x, y]
-    for (const auto &[x, y] : points) {
-      print("({}, {})\n", x, y);
-    }
+    for (const auto &[x, y] : points) print("({}, {})\n", x, y);
 
     constexpr std::array<int, 5> constNumbers = {1, 2, 3, 4, 5};
 
@@ -53,11 +49,10 @@ int main() {
     print("\nEx1: Sorted numbers: {} \n", numbers);
 
     int searchFor = 3;
-    if (std::find(numbers.begin(), numbers.end(), searchFor) != numbers.end()) {
+    if (std::find(numbers.begin(), numbers.end(), searchFor) != numbers.end())
       print("\nEx1: Found {}  in the array.\n", searchFor);
-    } else {
+    else
       print("\nEx1: Didn't find {} in the array.\n", searchFor);
-    }
   }
 
   /***********************************************************************************/
@@ -97,9 +92,7 @@ int main() {
     // auto it = std::find_if(employees.begin(), employees.end(), is_id_3);
     auto it = std::ranges::find_if(employees, is_id_3);
 
-    if (it != employees.end()) {
-      it->setName("Chuck");
-    }
+    if (it != employees.end()) it->setName("Chuck");
 
     print("Ex2: after mod: {}\n", employees | vtx(p_emp));
 
@@ -198,9 +191,7 @@ int main() {
       const auto start = clock::now();
 
       auto sum = 0;
-      for (auto x : v) {
-        sum += x;
-      }
+      for (auto x : v) sum += x;
 
       //   auto sum = std::reduce(policy, v.begin(), v.end());
       //   auto sum = std::accumulate(v.begin(), v.end(), 0);
@@ -316,19 +307,13 @@ int main() {
     hashTable.put("cherry", 30);
 
     int value;
-    if (hashTable.get("apple", value)) {
-      print("apple: {}\n", value);
-    }
+    if (hashTable.get("apple", value)) print("apple: {}\n", value);
 
-    if (hashTable.get("banana", value)) {
-      print("banana: {}\n", value);
-    }
+    if (hashTable.get("banana", value)) print("banana: {}\n", value);
 
     hashTable.remove("banana");
 
-    if (!hashTable.get("banana", value)) {
-      print("no banana\n");
-    }
+    if (!hashTable.get("banana", value)) print("no banana\n");
   }
 
   /***********************************************************************************/
@@ -343,9 +328,7 @@ int main() {
     string combined = greet + ", " + target + "!";
     print("Ex06: Combined: {}", combined);
 
-    if (s.find("C++") != string::npos) {
-      print("Ex06: found 'C++'\n");
-    }
+    if (s.find("C++") != string::npos) print("Ex06: found 'C++'\n");
 
     auto to_up = [](auto c) { return std::toupper(c); };
     auto ups = s | std::views::transform(to_up) | std::ranges::to<string>();
@@ -361,9 +344,7 @@ int main() {
     string first = "apple";
     string second = "banana";
 
-    if (first < second) {
-      print("Ex06: {}  comes before {}\n", first, second);
-    }
+    if (first < second) print("Ex06: {}  comes before {}\n", first, second);
 
     int number = 2112;
     string numStr = std::to_string(number);
