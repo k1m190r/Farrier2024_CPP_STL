@@ -1,4 +1,5 @@
 {
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "C_Cpp.default.cppStandard": "c++23",
     "files.associations": {
         "ostream": "cpp",
@@ -57,5 +58,4 @@
         "variant": "cpp",
         "chrono": "cpp"
     },
-    "editor.inlayHints.enabled": "offUnlessPressed",
 }
