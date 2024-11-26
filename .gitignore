@@ -2,3 +2,7 @@ ghidra_proj
 github_code
 out
 
+# junk for testing
+# clang++-20 -stdlib=libc++ -fsanitize=address -std=c++23 -static-libstdc++ -Wextra -pedantic -Wall -Werror code.cpp -o a && ./a
+code.cpp
+a
