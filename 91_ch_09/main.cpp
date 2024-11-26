@@ -52,7 +52,9 @@ int main() {
         "46 2 +",             // 48
         "5 1 2 + 4 * + 3 -",  // -14
         "3 4 5 * - ",         // 17
-                              // "3 0 /",              // divide by 0
+        // causes AddressSanitizer: alloc-dealloc-mismatch (operator new vs free) 
+        // throw std::runtime_error("Division by zero");
+        "3 0 /",              // divide by 0
     };
 
     try {
