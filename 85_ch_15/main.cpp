@@ -14,8 +14,11 @@ int main() {
     vector data = {5, 2, 9, 1, 5, 6, 8, 7, 3, 4};
     print("data: {}\n", data);
 
-    auto even_sorted = data | V::filter([](auto x) { return x % 2 == 0; }) |
-                       V::transform([](auto x) { return -x; }) | R::to<vector>();
+    auto flt = V::filter;
+    auto tx = V::transform;
+    auto is_even = [](auto x) { return x % 2 == 0; };
+    auto neg = [](auto x) { return -x; };
+    auto even_sorted = data | flt(is_even) | tx(neg) | R::to<vector>();
     R::sort(even_sorted);
 
     print("sorted even: {}\n", even_sorted);
