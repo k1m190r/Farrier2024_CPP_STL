@@ -1,5 +1,11 @@
 {
+    // disable hover crap
+    "editor.hover.enabled": false,
+    "editor.snippetSuggestions": "none",
+    "editor.parameterHints.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.inlayHints.enabled": "offUnlessPressed",
+
     "C_Cpp.default.cppStandard": "c++23",
     "files.associations": {
         "ostream": "cpp",
